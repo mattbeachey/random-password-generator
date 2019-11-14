@@ -1,39 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Password Generator</title>
-  </head>
-  <body>
-    <header>
-      <h1>Password Generator</h1>
-    </header>
-    <h2>Generate a Password</h2>
-    <textarea
-      readonly
-      id="password"
-      placeholder="Your Secure Password"
-      aria-label="Generated Password"
-    ></textarea>
-    <button id="generate">Generate Password</button>
-    <button id="copy">
-      Copy to Clipboard
-    </button>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Password Generator</title>
+</head>
+
+<body>
+  <header>
+    <h1>Password Generator</h1>
+  </header>
+  <h2>Generate a Password</h2>
+  <textarea readonly id="password" placeholder="Your Secure Password" aria-label="Generated Password"></textarea>
+  <button id="generate">Generate Password</button>
+  <button id="copy">
+    Copy to Clipboard
+  </button>
 
 
-    <script>
-        function passwordGenerator() {
-            const
+  <script>
+    //define character arrays
+    //define variables that the user will select (password length)
+    //when button is pushed, check to see if a given character type has been selected - if yes, push a random character from that array to a new array for the generated password
+    //continue pushing in a new character until the length of the new array for the generated password equals the length specified by the user
+    //randomize the characters in the generated password
+    //push generated password to user
+
+    //or
+
+    //define character arrays
+    //define variables that the user will select (password length)
+    //define a final character select array that is initially empty
+    //when button is pushed, check to see if a given character type has been selected - if yes, push all characters from that respective array into the final character array
+    //run a loop that randomly selects a character from the final array and adds to a generated password variable until the length of the generated password matches the user selection
+
+
+
+    function passwordGenerator() {
+
+
+      //all possible variables in arrays
+      const lowerCaseCharacters = ["a", "b", "c", "d", "e", "F", "g", "h", "i", "k", "k", "l", "m", "n", "o", "o", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+      const upperCaseCharacters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "K", "K", "L", "M", "N", "O", "O", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+      const numericCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+      const specialCharacters = ["!", "#", "$", "%", "&", "‘", "(", ")", "*", "+", "-", ".", "/", ":", ";", "=", "?", "@", "^", "_", "{", "|", "}"];
+
+      function handleClick() {
+        let availableCharacters = []
+        let finalPasswordArray = []
+
+        //see if special (id="special") is check—if it is, add to availableCharacters array
+        if (special.checked === true) {
+          finalPasswordArray = availableCharacters.concat(specialCharacters)
         }
-    passwordGenerator()
-    
-    
-    </script>
+
+        //like above, but with numeric characters
+        if (numeric.checked === true) {
+          finalPasswordArray = availableCharacters.concat(numericCharacters)
+        }
+
+        if (uppercase.checked === true) {
+          finalPasswordArray = availableCharacters.concat(upperCaseCharacters)
+        }
+
+        if (lowercase.checked === true) {
+          finalPasswordArray = availableCharacters.concat(lowerCaseCharacters)
+        }
+      }
 
 
 
-  </body>
+      //   function handleClick() {
+      //     let finalPasswordstring = ""
+      //     let finalPasswordArray = []
+      //     let chosenLength = document.getElementById(passwordlength)
+
+      //     if (specialCheck.checked === true) {
+      //       finalPasswordArray.push(specialCharacters[Math.floor(Math.random() * specialCharacters.length)])
+      //       allCharacters = specialCharacters.concat(allCharacters);
+      //     }
+
+      //   }
+
+      }
+      passwordGenerator()
+
+
+  </script>
+
+
+
+</body>
+
 </html>
-
