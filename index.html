@@ -50,23 +50,28 @@
       function handleClick() {
         let availableCharacters = []
         let finalPasswordArray = []
+        let chosenLength = document.getElementById(passwordlength)
 
         //see if special (id="special") is check—if it is, add to availableCharacters array
         if (special.checked === true) {
-          finalPasswordArray = availableCharacters.concat(specialCharacters)
+          availableCharacters = availableCharacters.concat(specialCharacters) //is it a problem to have an array add to itself like this? If so, create a new array for each addition
         }
 
         //like above, but with numeric characters
         if (numeric.checked === true) {
-          finalPasswordArray = availableCharacters.concat(numericCharacters)
+          availableCharacters = availableCharacters.concat(numericCharacters)
         }
 
         if (uppercase.checked === true) {
-          finalPasswordArray = availableCharacters.concat(upperCaseCharacters)
+          availableCharacters = availableCharacters.concat(upperCaseCharacters)
         }
 
         if (lowercase.checked === true) {
-          finalPasswordArray = availableCharacters.concat(lowerCaseCharacters)
+          availableCharacters = availableCharacters.concat(lowerCaseCharacters)
+        }
+
+        for(var i = 0; i < chosenLength; i++) {
+
         }
       }
 
