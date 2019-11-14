@@ -42,7 +42,7 @@
 
 
     function passwordGenerator() {
-      
+
 
       //all possible variables in arrays
       const lowerCaseCharacters = ["a", "b", "c", "d", "e", "F", "g", "h", "i", "k", "k", "l", "m", "n", "o", "o", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
@@ -63,7 +63,7 @@
       if (special == true) {
         const test1 = "result"
         console.log(test1)
-        availableCharacters = availableCharacters.concat(specialCharacters) //is it a problem to have an array add to itself like this? If so, create a new array for each addition
+        availableCharacters = availableCharacters.concat(specialCharacters)
       }
 
       //like above, but with numeric characters
@@ -81,9 +81,20 @@
 
       console.log(availableCharacters)
 
+      for (let i = 0; i < 8; i++) {
+        const randomIndex = Math.floor(Math.random() * availableCharacters.length);
+        finalPasswordArray.push(availableCharacters[randomIndex])
+      }
+      console.log(finalPasswordArray)
+
+
+
       // for (let i = 0; i < chosenLength; i++) {
       //   finalPasswordArray = finalPasswordArray + 
       //   }
+
+      // const randomIndex = Math.floor(Math.random() * letters.length);
+
     }
     passwordGenerator()
 
@@ -101,7 +112,7 @@
       //   }
 
       // }
-    
+
 
 
   </script>
