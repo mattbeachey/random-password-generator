@@ -33,13 +33,16 @@
     //define character arrays
     //define variables that the user will select (password length)
     //define a final character select array that is initially empty
-    //when button is pushed, check to see if a given character type has been selected - if yes, push all characters from that respective array into the final character array
+    //when button is pushed, check to see if a given character type has been selected 
+    //- if yes, push one character from array into final password, and push all characters from that respective array into the final character array
+    //do the same for the other character types
+    //final password should now have 1-4 characters in it - we will add the remaining characters from the final character array
     //run a loop that randomly selects a character from the final array and adds to a generated password variable until the length of the generated password matches the user selection
 
 
 
     function passwordGenerator() {
-
+      
 
       //all possible variables in arrays
       const lowerCaseCharacters = ["a", "b", "c", "d", "e", "F", "g", "h", "i", "k", "k", "l", "m", "n", "o", "o", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
@@ -47,34 +50,42 @@
       const numericCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
       const specialCharacters = ["!", "#", "$", "%", "&", "‘", "(", ")", "*", "+", "-", ".", "/", ":", ";", "=", "?", "@", "^", "_", "{", "|", "}"];
 
-      function handleClick() {
-        let availableCharacters = []
-        let finalPasswordArray = []
-        let chosenLength = document.getElementById(passwordlength)
+      let availableCharacters = []
+      let finalPasswordArray = []
+      let chosenLength = document.getElementById("passwordlength")
 
-        //see if special (id="special") is check—if it is, add to availableCharacters array
-        if (special.checked === true) {
-          availableCharacters = availableCharacters.concat(specialCharacters) //is it a problem to have an array add to itself like this? If so, create a new array for each addition
-        }
+      //see if special (id="special") is check—if it is, add to availableCharacters array - what can you do to console.log the result with checkec/unchecked?
+      const special = confirm("true or false")
+      const numeric = confirm("true or false")
+      const uppercase = confirm("true or false")
+      const lowercase = confirm("true or false")
 
-        //like above, but with numeric characters
-        if (numeric.checked === true) {
-          availableCharacters = availableCharacters.concat(numericCharacters)
-        }
-
-        if (uppercase.checked === true) {
-          availableCharacters = availableCharacters.concat(upperCaseCharacters)
-        }
-
-        if (lowercase.checked === true) {
-          availableCharacters = availableCharacters.concat(lowerCaseCharacters)
-        }
-
-        for(var i = 0; i < chosenLength; i++) {
-          finalPasswordArray = finalPasswordArray + 
-        }
+      if (special == true) {
+        const test1 = "result"
+        console.log(test1)
+        availableCharacters = availableCharacters.concat(specialCharacters) //is it a problem to have an array add to itself like this? If so, create a new array for each addition
       }
 
+      //like above, but with numeric characters
+      if (numeric == true) {
+        availableCharacters = availableCharacters.concat(numericCharacters)
+      }
+
+      if (uppercase == true) {
+        availableCharacters = availableCharacters.concat(upperCaseCharacters)
+      }
+
+      if (lowercase == true) {
+        availableCharacters = availableCharacters.concat(lowerCaseCharacters)
+      }
+
+      console.log(availableCharacters)
+
+      // for (let i = 0; i < chosenLength; i++) {
+      //   finalPasswordArray = finalPasswordArray + 
+      //   }
+    }
+    passwordGenerator()
 
 
       //   function handleClick() {
@@ -89,8 +100,8 @@
 
       //   }
 
-      }
-      passwordGenerator()
+      // }
+    
 
 
   </script>
