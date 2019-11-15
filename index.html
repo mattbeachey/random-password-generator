@@ -21,15 +21,8 @@
 
 
   <script>
-    //define character arrays
-    //define variables that the user will select (password length)
-    //when button is pushed, check to see if a given character type has been selected - if yes, push a random character from that array to a new array for the generated password
-    //continue pushing in a new character until the length of the new array for the generated password equals the length specified by the user
-    //randomize the characters in the generated password
-    //push generated password to user
 
-    //or
-
+    //Pseudo-code Outline:
     //define character arrays
     //define variables that the user will select (password length)
     //define a final character select array that is initially empty
@@ -38,8 +31,7 @@
     //do the same for the other character types
     //final password should now have 1-4 characters in it - we will add the remaining characters from the final character array
     //run a loop that randomly selects a character from the final array and adds to a generated password variable until the length of the generated password matches the user selection
-
-
+    //once the final characters for the password are generated, scramble the final password array for a further degree of randomness
 
     function outsideFunction() {
       
@@ -54,6 +46,7 @@
       let availableCharacters = []
       let finalPasswordArray = []
       let chosenLength = document.getElementById("passwordlength")
+      let remainingPasswordCharacters = [] //this string will be used to determine how many additional characters need to be added to the password after 1 character from each chosen character has been added
 
       //see if special (id="special") is check—if it is, add to availableCharacters array - what can you do to console.log the result with checkec/unchecked?
       const special = confirm("true or false")
@@ -67,12 +60,11 @@
       //-choose a single random character from their cooresponding character array and push it into the final password array. This ensures that at least one of each chosen character will end up in the final password.
       if (special == true) {
         //this portion adds all special characters to the availableCharacters array to later be chosen from randomly
-        const test1 = "result"
-        console.log(test1)
         availableCharacters = availableCharacters.concat(specialCharacters)
         //this portion selects one character from the specialCharacters array and pushes it to the final password, ensuring that at least one special character is in the final password
         const randomIndexSpecial = Math.floor(Math.random() * specialCharacters.length);
         finalPasswordArray.push(specialCharacters[randomIndexSpecial])
+        remainingPasswordCharacters.push(1)
       }
 
       //like above, but with numeric characters, etc for the rest
@@ -80,23 +72,28 @@
         availableCharacters = availableCharacters.concat(numericCharacters)
         const randomIndexNumeric = Math.floor(Math.random() * numericCharacters.length);
         finalPasswordArray.push(numericCharacters[randomIndexNumeric])
+        remainingPasswordCharacters.push(1)
       }
 
       if (uppercase == true) {
         availableCharacters = availableCharacters.concat(upperCaseCharacters)
         const randomIndexUpperCase = Math.floor(Math.random() * upperCaseCharacters.length);
         finalPasswordArray.push(upperCaseCharacters[randomIndexUpperCase])
+        remainingPasswordCharacters.push(1)
       }
 
       if (lowercase == true) {
         availableCharacters = availableCharacters.concat(lowerCaseCharacters)
         const randomIndexLowerCase = Math.floor(Math.random() * lowerCaseCharacters.length);
         finalPasswordArray.push(lowerCaseCharacters[randomIndexLowerCase])
+        remainingPasswordCharacters.push(1)
       }
 
+      let remainingPasswordCharactersString = remainingPasswordCharacters.length //this counts the occurences in the remainingPasswordCharacters array and converts it to a number
       console.log(availableCharacters)
+      console.log(remainingPasswordCharactersString)
 
-      for (let i = 0; i < 8 - 4; i++) {
+      for (let i = 0; i < 8 - remainingPasswordCharactersString; i++) {
         const randomIndex = Math.floor(Math.random() * availableCharacters.length);
         finalPasswordArray.push(availableCharacters[randomIndex])
       }
