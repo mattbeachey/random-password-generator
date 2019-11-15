@@ -12,6 +12,9 @@ h1 {
 h1:hover {
     background-color: #ecf1eb;
     color: #3e8ca2;
+    transform: translate(10px);
+    box-shadow: 5px 5px #ecf1eb83;
+    text-shadow: 5px 5px #3e8ca231;
 }
 
 h2 {
@@ -41,6 +44,10 @@ body {
     background-color: #3e8ca2;
 }
 
+hr {
+    border: solid 2px #4d94a8;
+}
+
 textarea {
     background-color: #3e8ca2;
     border: 2px solid #ecf1eb;
@@ -54,13 +61,17 @@ textarea {
 }
 
 textarea:hover {
-    background-color: #ecf1eb;
-    color: #3e8ca2;
+    background-color: #4d94a8;  
+    color: #ffffff;
+    opacity: 0.5;
 }
 
 ::placeholder.hover {
     color: #3e8ca2;
+  }
 
+  ::selection {
+    background: #eba5a5;; /* WebKit/Blink Browsers */
   }
 
 input {
@@ -82,6 +93,7 @@ input {
 
 .rowboat1 {
     border-radius: 8px 0px 0px 0px;
+    
 }
 
 .rowboat2 {
@@ -96,24 +108,32 @@ input {
     border-radius: 0px 0px 8px 0px;
 }
 
+.rowboat1:hover, .rowboat2:hover, .rowboat3:hover, .rowboat4:hover {
+    background-color: #4d94a8;
+}
+
 button {
     width: 38%;
     background-color: #3e8ca2;
     border: 2px solid #ecf1eb;
     color: #ecf1eb;
-    margin: 2% 5% 2% 5%;
+    margin: 2% 5% 0 5%;
     padding: 0;
-    border-radius: 4px;
+    border-radius: 10px;
     height: 60px;
 }
 
 button:hover {
     background-color: #ecf1eb;
     color: #3e8ca2;
-    transition: all 0.3s;
+    transition: all 0.5s;
 }
 
 button:active {
     background-color: #ecf1eb;
     color: #3e8ca2;
+}
+
+.checkboxpadding {
+    max-resolution: 0 0 3px 0;
 }

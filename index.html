@@ -32,8 +32,7 @@
   <div class="row">
     <div class="col-md-12 col-lg-3"></div>
     <div class="col-md-12 col-lg-6">
-      <input id="passwordlength" type="text" class="form-control" aria-label="Large"
-        aria-describedby="inputGroup-sizing-sm" placeholder="select between 8 and 128 characters">
+      <input id="passwordlength" type="text" class="form-control" placeholder="select between 8 and 128 characters">
     </div>
     <div class="col-md-12 col-lg-3"></div>
   </div>
@@ -52,26 +51,22 @@
     <div class="col-3">
       <div class="row rowboat1">
         <p>Special Characters</p>
-        <input id="specialID" type="checkbox" class="form-control" aria-label="Large"
-          aria-describedby="inputGroup-sizing-sm">
+        <input id="specialID" type="checkbox" class="form-control mb-1">
       </div>
       <div class="row rowboat2">
         <p>Numeric Characters</p>
-        <input id="numericID" type="checkbox" class="form-control" aria-label="Large"
-          aria-describedby="inputGroup-sizing-sm">
+        <input id="numericID" type="checkbox" class="form-control mb-1">
       </div>
     </div>
 
     <div class="col-3">
       <div class="row rowboat3">
         <p>Uppercase Characters</p>
-        <input id="uppercaseID" type="checkbox" class="form-control" aria-label="Large"
-          aria-describedby="inputGroup-sizing-sm">
+        <input id="uppercaseID" type="checkbox" class="form-control mb-1">
       </div>
       <div class="row rowboat4">
         <p>Lowercase Characters</p>
-        <input id="lowercaseID" type="checkbox" class="form-control" aria-label="Large"
-          aria-describedby="inputGroup-sizing-sm">
+        <input id="lowercaseID" type="checkbox" class="form-control mb-1">
       </div>
     </div>
 
@@ -94,8 +89,8 @@
   <div class="row">
     <div class="col-md-12 col-lg-2"></div>
     <div class="col-md-12 col-lg-8">
-        <button id="generate">Generate Password</button>
-        <button id="copy">Copy to Clipboard</button>
+      <button id="generate">Generate Password</button>
+      <button onclick="copyToClipboard()" id="copy">Copy to Clipboard</button>
     </div>
     <div class="col-md-12 col-lg-2"></div>
   </div>
@@ -105,7 +100,7 @@
   <div class="row">
     <div class="col-md-12 col-lg-3"></div>
     <div class="col-md-12 col-lg-6">
-      <textarea readonly id="password" placeholder="Your Secure Password" aria-label="Generated Password"></textarea>
+      <textarea readonly id="password" placeholder="Your Secure Password"></textarea>
     </div>
     <div class="col-md-12 col-lg-3"></div>
   </div>
@@ -113,7 +108,7 @@
 
 
 
-  
+
 
 
   <script>
@@ -218,11 +213,19 @@
           const finalPasswordText = document.getElementById("password")
           finalPasswordText.innerText = finalPasswordString
 
+          function copyToClipboard() {
+            const pwdCopyInputEl= document.gelElementByID("password")
+            pwdCopyInputEl.select();
+            pwdCopyInputEl.setSelectionRange(0, 99999)
+            document.execCommand('copy');
+          };
+
+
         } else alert("Your password may not contain more than 128 characters")
 
       } else alert("Your password must be at least 8 characters")
 
-
+      window.copyToClipboard = copyToClipboard;
 
     }
 
