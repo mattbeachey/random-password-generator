@@ -66,29 +66,37 @@
       //-add all characters from their cooresponding character array into the total available characters array AND...
       //-choose a single random character from their cooresponding character array and push it into the final password array. This ensures that at least one of each chosen character will end up in the final password.
       if (special == true) {
+        //this portion adds all special characters to the availableCharacters array to later be chosen from randomly
         const test1 = "result"
         console.log(test1)
         availableCharacters = availableCharacters.concat(specialCharacters)
-        // const randomIndex = Math.floor(Math.random() * availableCharacters.length);
-        // finalPasswordArray.push(availableCharacters[randomIndex])
+        //this portion selects one character from the specialCharacters array and pushes it to the final password, ensuring that at least one special character is in the final password
+        const randomIndexSpecial = Math.floor(Math.random() * specialCharacters.length);
+        finalPasswordArray.push(specialCharacters[randomIndexSpecial])
       }
 
-      //like above, but with numeric characters
+      //like above, but with numeric characters, etc for the rest
       if (numeric == true) {
         availableCharacters = availableCharacters.concat(numericCharacters)
+        const randomIndexNumeric = Math.floor(Math.random() * numericCharacters.length);
+        finalPasswordArray.push(numericCharacters[randomIndexNumeric])
       }
 
       if (uppercase == true) {
         availableCharacters = availableCharacters.concat(upperCaseCharacters)
+        const randomIndexUpperCase = Math.floor(Math.random() * upperCaseCharacters.length);
+        finalPasswordArray.push(upperCaseCharacters[randomIndexUpperCase])
       }
 
       if (lowercase == true) {
         availableCharacters = availableCharacters.concat(lowerCaseCharacters)
+        const randomIndexLowerCase = Math.floor(Math.random() * lowerCaseCharacters.length);
+        finalPasswordArray.push(lowerCaseCharacters[randomIndexLowerCase])
       }
 
       console.log(availableCharacters)
 
-      for (let i = 0; i < 8; i++) {
+      for (let i = 0; i < 8 - 4; i++) {
         const randomIndex = Math.floor(Math.random() * availableCharacters.length);
         finalPasswordArray.push(availableCharacters[randomIndex])
       }
