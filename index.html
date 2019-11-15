@@ -14,27 +14,40 @@
 
 <body>
   <div class="row">
-    <div class="col-3"></div>
-    <div class="col-6">
+    <div class="col-xs-12 col-sm-12 col-md-3"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6">
       <h1 class="text-center">Password Generator</h1>
     </div>
-    <div class="col-3"></div>
+    <div class="col-xs-12 col-sm-12 col-md-3"></div>
   </div>
 
   <div class="row">
-    <div class="col-3"></div>
-    <div class="col-6">
+    <div class="col-xs-12 col-sm-12 col-md-3"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6">
       <h2 class="text-center">How long would you like your password to be?</h2>
     </div>
-    <div class="col-3"></div>
+    <div class="col-xs-12 col-sm-12 col-md-3"></div>
   </div>
 
   <div class="row">
-    <div class="col-3"></div>
-    <div class="col-6">
-        <p class="text-center">(select between 8 and 128)</p><input class="text-center">
+    <div class="col-xs-12 col-sm-12 col-md-3"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6">
+        <p class="text-center">(select between 8 and 128)</p><input id="passwordlength" type="text" class="form-control" aria-label="Large"
+        aria-describedby="inputGroup-sizing-sm">
+        <p>Special Characters</p>
+        <input id="specialID" type="checkbox" class="form-control" aria-label="Large"
+        aria-describedby="inputGroup-sizing-sm">
+        <p>Numeric Characters</p>
+        <input id="numericID" type="checkbox" class="form-control" aria-label="Large"
+        aria-describedby="inputGroup-sizing-sm">
+        <p>Uppercase Characters</p>
+        <input id="uppercaseID" type="checkbox" class="form-control" aria-label="Large"
+        aria-describedby="inputGroup-sizing-sm">
+        <p>Lowercase Characters</p>
+        <input id="lowercaseID" type="checkbox" class="form-control" aria-label="Large"
+        aria-describedby="inputGroup-sizing-sm">
     </div>
-    <div class="col-3"></div>
+    <div class="col-xs-12 col-sm-12 col-md-3"></div>
   </div>
 
 
@@ -71,14 +84,17 @@
 
         let availableCharacters = []
         let finalPasswordArray = []
-        let chosenLength = document.getElementById("passwordlength")
+        const chosenLength = document.getElementById("passwordlength").value;
+        console.log(chosenLength) //how do I get this to be the user input, and not the entire piece of html
         let remainingPasswordCharacters = [] //this string will be used to determine how many additional characters need to be added to the password after 1 character from each chosen character has been added
 
         //see if special (id="special") is check—if it is, add to availableCharacters array - what can you do to console.log the result with checkec/unchecked?
-        const special = confirm("true or false")
-        const numeric = confirm("true or false")
-        const uppercase = confirm("true or false")
-        const lowercase = confirm("true or false")
+        const special = document.getElementById("specialID").checked;
+        const numeric = document.getElementById("numericID").checked;
+        const uppercase = document.getElementById("uppercaseID").checked;
+        const lowercase = document.getElementById("lowercaseID").checked;
+        console.log(special)
+
 
 
         //the below if/then functions do the following: check to see if their cooresponding input box is checked. If true then:
@@ -119,11 +135,14 @@
         console.log(availableCharacters)
         console.log(remainingPasswordCharactersString)
 
-        for (let i = 0; i < 8 - remainingPasswordCharactersString; i++) {
+        for (let i = 0; i < chosenLength - remainingPasswordCharactersString; i++) {
           const randomIndex = Math.floor(Math.random() * availableCharacters.length);
           finalPasswordArray.push(availableCharacters[randomIndex])
         }
         console.log(finalPasswordArray)
+        //finalPasswordArray.sort()
+        let finalPasswordString = finalPasswordArray.join("")
+        console.log(finalPasswordString)
 
 
 
