@@ -14,41 +14,61 @@
 
 <body>
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-3"></div>
-    <div class="col-xs-12 col-sm-12 col-md-6">
+    <div class="col-md-12 col-lg-3"></div>
+    <div class="col-md-12 col-lg-6">
       <h1 class="text-center">Password Generator</h1>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-3"></div>
+    <div class="col-md-12 col-lg-3"></div>
   </div>
 
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-3"></div>
-    <div class="col-xs-12 col-sm-12 col-md-6">
+    <div class="col-md-12 col-lg-3"></div>
+    <div class="col-md-12 col-lg-6">
       <h2 class="text-center">How long would you like your password to be?</h2>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-3"></div>
+    <div class="col-md-12 col-lg-3"></div>
   </div>
 
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-3"></div>
-    <div class="col-xs-12 col-sm-12 col-md-6">
-      <p class="text-center">(select between 8 and 128)</p><input id="passwordlength" type="text" class="form-control"
-        aria-label="Large" aria-describedby="inputGroup-sizing-sm">
-      <p>Special Characters</p>
-      <input id="specialID" type="checkbox" class="form-control" aria-label="Large"
-        aria-describedby="inputGroup-sizing-sm">
-      <p>Numeric Characters</p>
-      <input id="numericID" type="checkbox" class="form-control" aria-label="Large"
-        aria-describedby="inputGroup-sizing-sm">
-      <p>Uppercase Characters</p>
-      <input id="uppercaseID" type="checkbox" class="form-control" aria-label="Large"
-        aria-describedby="inputGroup-sizing-sm">
-      <p>Lowercase Characters</p>
-      <input id="lowercaseID" type="checkbox" class="form-control" aria-label="Large"
-        aria-describedby="inputGroup-sizing-sm">
+    <div class="col-md-12 col-lg-3"></div>
+    <div class="col-md-12 col-lg-6">
+      <input id="passwordlength" type="text" class="form-control" aria-label="Large"
+        aria-describedby="inputGroup-sizing-sm" placeholder="select between 8 and 128 characters">
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-3"></div>
+    <div class="col-md-12 col-lg-3"></div>
   </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12 col-lg-3"></div>
+    <div class="col-md-12 col-lg-6">
+      <h2 class="text-center">What types of characters would you like to include?</h2>
+    </div>
+    <div class="col-md-12 col-lg-3"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 col-lg-3"></div>
+    <div class="col-md-12 col-lg-6">
+      <div class="row">
+        <p>Special Characters</p>
+        <input id="specialID" type="checkbox" class="form-control" aria-label="Large"
+          aria-describedby="inputGroup-sizing-sm">
+        <p>Numeric Characters</p>
+        <input id="numericID" type="checkbox" class="form-control" aria-label="Large"
+          aria-describedby="inputGroup-sizing-sm">
+        <p>Uppercase Characters</p>
+        <input id="uppercaseID" type="checkbox" class="form-control" aria-label="Large"
+          aria-describedby="inputGroup-sizing-sm">
+        <p>Lowercase Characters</p>
+        <input id="lowercaseID" type="checkbox" class="form-control" aria-label="Large"
+          aria-describedby="inputGroup-sizing-sm">
+      </div>
+    </div>
+    <div class="col-md-12 col-lg-3"></div>
+  </div>
+
+
+
 
 
 
@@ -72,119 +92,105 @@
     //run a loop that randomly selects a character from the final array and adds to a generated password variable until the length of the generated password matches the user selection
     //once the final characters for the password are generated, scramble the final password array for a further degree of randomness
 
-    function outsideFunction() {
-
-      function passwordGenerator() {
-
-        //all possible variables in arrays
-        const lowerCaseCharacters = ["a", "b", "c", "d", "e", "F", "g", "h", "i", "k", "k", "l", "m", "n", "o", "o", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-        const upperCaseCharacters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "K", "K", "L", "M", "N", "O", "O", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-        const numericCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-        const specialCharacters = ["!", "#", "$", "%", "&", "‘", "(", ")", "*", "+", "-", ".", "/", ":", ";", "=", "?", "@", "^", "_", "{", "|", "}"];
-        let availableCharacters = []
-        let finalPasswordArray = []
-        const chosenLength = document.getElementById("passwordlength").value;
-        let remainingPasswordCharacters = [] //this string will be used to determine how many additional characters need to be added to the password after 1 character from each chosen character has been added
-        const special = document.getElementById("specialID").checked;
-        const numeric = document.getElementById("numericID").checked;
-        const uppercase = document.getElementById("uppercaseID").checked;
-        const lowercase = document.getElementById("lowercaseID").checked;
-
-        //the below if/then functions do the following: check to see if their cooresponding input box is checked. If true then:
-        //-add all characters from their cooresponding character array into the total available characters array AND...
-        //-choose a single random character from their cooresponding character array and push it into the final password array. This ensures that at least one of each chosen character will end up in the final password.
-
-        if (special == true) {
-          //this portion adds all special characters to the availableCharacters array to later be chosen from randomly
-          availableCharacters = availableCharacters.concat(specialCharacters)
-          //this portion selects one character from the specialCharacters array and pushes it to the final password, ensuring that at least one special character is in the final password
-          const randomIndexSpecial = Math.floor(Math.random() * specialCharacters.length);
-          finalPasswordArray.push(specialCharacters[randomIndexSpecial])
-          remainingPasswordCharacters.push(1)
-        }
-
-        //like above, but with numeric characters, etc for the rest
-        if (numeric == true) {
-          availableCharacters = availableCharacters.concat(numericCharacters)
-          const randomIndexNumeric = Math.floor(Math.random() * numericCharacters.length);
-          finalPasswordArray.push(numericCharacters[randomIndexNumeric])
-          remainingPasswordCharacters.push(1)
-        }
-
-        if (uppercase == true) {
-          availableCharacters = availableCharacters.concat(upperCaseCharacters)
-          const randomIndexUpperCase = Math.floor(Math.random() * upperCaseCharacters.length);
-          finalPasswordArray.push(upperCaseCharacters[randomIndexUpperCase])
-          remainingPasswordCharacters.push(1)
-        }
-
-        if (lowercase == true) {
-          availableCharacters = availableCharacters.concat(lowerCaseCharacters)
-          const randomIndexLowerCase = Math.floor(Math.random() * lowerCaseCharacters.length);
-          finalPasswordArray.push(lowerCaseCharacters[randomIndexLowerCase])
-          remainingPasswordCharacters.push(1)
-        }
-
-        let remainingPasswordCharactersString = remainingPasswordCharacters.length //this counts the occurences in the remainingPasswordCharacters array and converts it to a number
-
-        //the loop below selects a random character from the combined array "availableCharacters" and adds it to finalPasswordArray. 
-        //It continues doing this until the ammount of strings in finalPasswordArray equals the user's selecte password length.
-        //Note: Before this loop even begins, finalPasswordArray has 1-4 strings in it already from the above if functions.
-
-        for (let i = 0; i < chosenLength - remainingPasswordCharactersString; i++) {
-          const randomIndex = Math.floor(Math.random() * availableCharacters.length);
-          finalPasswordArray.push(availableCharacters[randomIndex])
-        }
-
-        //The function below randomizes the finalPasswordArray to add a stronger degree of randomness. Otherwise the password would always start with whatever characters were first selected.
-        //I got this function from: https://medium.com/@nitinpatel_20236/how-to-shuffle-correctly-shuffle-an-array-in-javascript-15ea3f84bfb
-        for (let i = finalPasswordArray.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * i)
-          const temp = finalPasswordArray[i]
-          finalPasswordArray[i] = finalPasswordArray[j]
-          finalPasswordArray[j] = temp
-        }
-
-        //the below script converts the finalPasswordArray to a string that can be sent back to the user
-        let finalPasswordString = finalPasswordArray.join("")
-
-        //this script sends the final password to the user
-        const finalPasswordText = document.getElementById("password")
-        finalPasswordText.innerText = finalPasswordString
 
 
+    function passwordGenerator() {
 
-        // for (let i = 0; i < chosenLength; i++) {
-        //   finalPasswordArray = finalPasswordArray + 
-        //   }
+      //all possible variables in arrays
+      const lowerCaseCharacters = ["a", "b", "c", "d", "e", "F", "g", "h", "i", "k", "k", "l", "m", "n", "o", "o", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+      const upperCaseCharacters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "K", "K", "L", "M", "N", "O", "O", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+      const numericCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+      const specialCharacters = ["!", "#", "$", "%", "&", "‘", "(", ")", "*", "+", "-", ".", "/", ":", ";", "=", "?", "@", "^", "_", "{", "|", "}"];
+      let availableCharacters = []
+      let finalPasswordArray = []
+      const chosenLength = document.getElementById("passwordlength").value;
+      let remainingPasswordCharacters = [] //this string will be used to determine how many additional characters need to be added to the password after 1 character from each chosen character has been added
+      const special = document.getElementById("specialID").checked;
+      const numeric = document.getElementById("numericID").checked;
+      const uppercase = document.getElementById("uppercaseID").checked;
+      const lowercase = document.getElementById("lowercaseID").checked;
 
-        // const randomIndex = Math.floor(Math.random() * letters.length);
+      //the below if/then functions do the following: check to see if their cooresponding input box is checked. If true then:
+      //-add all characters from their cooresponding character array into the total available characters array AND...
+      //-choose a single random character from their cooresponding character array and push it into the final password array. This ensures that at least one of each chosen character will end up in the final password.
 
-      }
+      if (chosenLength > 7) {
 
-      document.getElementById("generate").addEventListener("click", function () {
-        passwordGenerator(); //this event listener is triggerin the function password generator laid out above
-      });
+        if (chosenLength < 129) {
+
+
+          if (special == true) {
+            //this portion adds all special characters to the availableCharacters array to later be chosen from randomly
+            availableCharacters = availableCharacters.concat(specialCharacters)
+            //this portion selects one character from the specialCharacters array and pushes it to the final password, ensuring that at least one special character is in the final password
+            const randomIndexSpecial = Math.floor(Math.random() * specialCharacters.length);
+            finalPasswordArray.push(specialCharacters[randomIndexSpecial])
+            remainingPasswordCharacters.push(1)
+          }
+
+          //like above, but with numeric characters, etc for the rest
+          if (numeric == true) {
+            availableCharacters = availableCharacters.concat(numericCharacters)
+            const randomIndexNumeric = Math.floor(Math.random() * numericCharacters.length);
+            finalPasswordArray.push(numericCharacters[randomIndexNumeric])
+            remainingPasswordCharacters.push(1)
+          }
+
+          if (uppercase == true) {
+            availableCharacters = availableCharacters.concat(upperCaseCharacters)
+            const randomIndexUpperCase = Math.floor(Math.random() * upperCaseCharacters.length);
+            finalPasswordArray.push(upperCaseCharacters[randomIndexUpperCase])
+            remainingPasswordCharacters.push(1)
+          }
+
+          if (lowercase == true) {
+            availableCharacters = availableCharacters.concat(lowerCaseCharacters)
+            const randomIndexLowerCase = Math.floor(Math.random() * lowerCaseCharacters.length);
+            finalPasswordArray.push(lowerCaseCharacters[randomIndexLowerCase])
+            remainingPasswordCharacters.push(1)
+          }
+
+          let remainingPasswordCharactersString = remainingPasswordCharacters.length //this counts the occurences in the remainingPasswordCharacters array and converts it to a number
+
+          //the loop below selects a random character from the combined array "availableCharacters" and adds it to finalPasswordArray. 
+          //It continues doing this until the ammount of strings in finalPasswordArray equals the user's selecte password length.
+          //Note: Before this loop even begins, finalPasswordArray has 1-4 strings in it already from the above if functions.
+
+          for (let i = 0; i < chosenLength - remainingPasswordCharactersString; i++) {
+            const randomIndex = Math.floor(Math.random() * availableCharacters.length);
+            finalPasswordArray.push(availableCharacters[randomIndex])
+          }
+
+          //The function below randomizes the finalPasswordArray to add a stronger degree of randomness. Otherwise the password would always start with whatever characters were first selected.
+          //I got this function from: https://medium.com/@nitinpatel_20236/how-to-shuffle-correctly-shuffle-an-array-in-javascript-15ea3f84bfb
+          for (let i = finalPasswordArray.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * i)
+            const temp = finalPasswordArray[i]
+            finalPasswordArray[i] = finalPasswordArray[j]
+            finalPasswordArray[j] = temp
+          }
+
+          //the below script converts the finalPasswordArray to a string that can be sent back to the user
+          let finalPasswordString = finalPasswordArray.join("")
+
+          //this script sends the final password to the user
+          const finalPasswordText = document.getElementById("password")
+          finalPasswordText.innerText = finalPasswordString
+
+        } else alert("Your password may not contain more than 128 characters")
+
+      } else alert("Your password must be at least 8 characters")
+
+
 
     }
 
+    document.getElementById("generate").addEventListener("click", function () {
+      passwordGenerator(); //this event listener is triggerin the function password generator laid out above
+    });
 
-    outsideFunction()
 
 
-      //   function handleClick() {
-      //     let finalPasswordstring = ""
-      //     let finalPasswordArray = []
-      //     let chosenLength = document.getElementById(passwordlength)
-
-      //     if (specialCheck.checked === true) {
-      //       finalPasswordArray.push(specialCharacters[Math.floor(Math.random() * specialCharacters.length)])
-      //       allCharacters = specialCharacters.concat(allCharacters);
-      //     }
-
-      //   }
-
-      // }
 
 
 
