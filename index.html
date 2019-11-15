@@ -41,8 +41,9 @@
 
 
 
-    function passwordGenerator() {
-
+    function outsideFunction() {
+      
+      function passwordGenerator() {
 
       //all possible variables in arrays
       const lowerCaseCharacters = ["a", "b", "c", "d", "e", "F", "g", "h", "i", "k", "k", "l", "m", "n", "o", "o", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
@@ -60,10 +61,16 @@
       const uppercase = confirm("true or false")
       const lowercase = confirm("true or false")
 
+
+      //the below if/then functions do the following: check to see if their cooresponding input box is checked. If true then:
+      //-add all characters from their cooresponding character array into the total available characters array AND...
+      //-choose a single random character from their cooresponding character array and push it into the final password array. This ensures that at least one of each chosen character will end up in the final password.
       if (special == true) {
         const test1 = "result"
         console.log(test1)
         availableCharacters = availableCharacters.concat(specialCharacters)
+        // const randomIndex = Math.floor(Math.random() * availableCharacters.length);
+        // finalPasswordArray.push(availableCharacters[randomIndex])
       }
 
       //like above, but with numeric characters
@@ -96,7 +103,15 @@
       // const randomIndex = Math.floor(Math.random() * letters.length);
 
     }
-    passwordGenerator()
+
+    document.getElementById("generate").addEventListener("click", function() {
+        passwordGenerator(); //this event listener is triggerin the function password generator laid out above
+      });
+
+  }
+
+
+    outsideFunction()
 
 
       //   function handleClick() {
