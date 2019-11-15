@@ -214,11 +214,9 @@
           finalPasswordText.innerText = finalPasswordString
 
           function copyToClipboard() {
-            const pwdCopyInputEl= document.gelElementByID("password")
-            pwdCopyInputEl.select();
-            pwdCopyInputEl.setSelectionRange(0, 99999)
-            document.execCommand('copy');
-          };
+            document.getElementById("password").select();
+            document.execCommand("copy");
+          }
 
 
         } else alert("Your password may not contain more than 128 characters")

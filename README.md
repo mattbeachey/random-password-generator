@@ -17,6 +17,4 @@ Finally, the function scrambles the final password after generating it to the us
             finalPasswordArray[j] = temp
           }
 
-Planned features:
-I intended to add a functional "copy to clipboard" button, but I couldn't quite get that js working. I will update that soon, however.
 

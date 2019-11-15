@@ -88,7 +88,7 @@ input {
   }
 
 .rowboat1, .rowboat2, .rowboat3, .rowboat4 {
-    border: 1px solid #ecf1eb;
+    border: 1px dashed #ecf1eb;
 }
 
 .rowboat1 {
