@@ -12,13 +12,20 @@ h2 {
     font-size: 30px;
     color: #ecf1eb;
     font-family: 'Roboto Condensed', sans-serif;
+}
 
+@media screen and (max-width: 992px) {
+    h2 {
+        font-size: 22px;
+    }
 }
 
 p {
     font-size: 18px;
     color: #ecf1eb;
-    font-family: 'Roboto Condensed', sans-serif; 
+    font-family: 'Roboto Condensed', sans-serif;
+    width: 100%;
+    text-align: center; 
 }
 
 body {
@@ -34,6 +41,15 @@ textarea {
     font-size: 20px;
     height: 70px;
     border-radius: 8px;
+    text-align: center;
+}
+
+input {
+    background-color: #3e8ca2;
+    border: 1px solid #ecf1eb;
+    width: 100%;
+    color: #ecf1eb;
+    border-radius: 8px;
 }
 
 ::placeholder {
@@ -41,6 +57,44 @@ textarea {
 
   }
 
-.rowboat {
-    border: 1px solid #ecf1eb;
+.rowboat1, .rowboat2, .rowboat3, .rowboat4 {
+    border: 2px solid #ecf1eb;
+}
+
+.rowboat1 {
+    border-radius: 8px 0px 0px 0px;
+}
+
+.rowboat2 {
+    border-radius: 0px 0px 0px 8px;
+}
+
+.rowboat3 {
+    border-radius: 0px 8px 0px 0px;
+}
+
+.rowboat4 {
+    border-radius: 0px 0px 8px 8px;
+}
+
+button {
+    width: 38%;
+    background-color: #3e8ca2;
+    border: 2px solid #ecf1eb;
+    color: #ecf1eb;
+    margin: 2% 5% 2% 5%;
+    padding: 0;
+    border-radius: 4px;
+    height: 60px;
+}
+
+button:hover {
+    background-color: #ecf1eb;
+    color: #3e8ca2;
+    transition: all 0.3s;
+}
+
+button:active {
+    background-color: #ecf1eb;
+    color: #3e8ca2;
 }
