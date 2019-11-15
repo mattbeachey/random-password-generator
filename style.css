@@ -1,0 +1,26 @@
+/* div {
+    border: 1px solid black;
+} */
+
+h1 {
+    font-size: 100px;
+    color: #ecf1eb;
+    font-family: Bebas Neue;
+}
+
+h2 {
+    font-size: 30px;
+    color: #ecf1eb;
+    font-family: 'Roboto Condensed', sans-serif;
+
+}
+
+p {
+    font-size: 18px;
+    color: #ecf1eb;
+    font-family: 'Roboto Condensed', sans-serif; 
+}
+
+body {
+    background-color: #3e8ca2;
+}

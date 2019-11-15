@@ -6,13 +6,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Password Generator</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <header>
-    <h1>Password Generator</h1>
-  </header>
-  <h2>Generate a Password</h2>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <h1 class="text-center">Password Generator</h1>
+    </div>
+    <div class="col-3"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <h2 class="text-center">How long would you like your password to be?</h2>
+    </div>
+    <div class="col-3"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <p class="text-center">(select between 8 and 128)</p><input class="text-center">
+    </div>
+    <div class="col-3"></div>
+  </div>
+
+
+  
   <textarea readonly id="password" placeholder="Your Secure Password" aria-label="Generated Password"></textarea>
   <button id="generate">Generate Password</button>
   <button id="copy">
@@ -34,86 +60,86 @@
     //once the final characters for the password are generated, scramble the final password array for a further degree of randomness
 
     function outsideFunction() {
-      
+
       function passwordGenerator() {
 
-      //all possible variables in arrays
-      const lowerCaseCharacters = ["a", "b", "c", "d", "e", "F", "g", "h", "i", "k", "k", "l", "m", "n", "o", "o", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-      const upperCaseCharacters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "K", "K", "L", "M", "N", "O", "O", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-      const numericCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-      const specialCharacters = ["!", "#", "$", "%", "&", "‘", "(", ")", "*", "+", "-", ".", "/", ":", ";", "=", "?", "@", "^", "_", "{", "|", "}"];
+        //all possible variables in arrays
+        const lowerCaseCharacters = ["a", "b", "c", "d", "e", "F", "g", "h", "i", "k", "k", "l", "m", "n", "o", "o", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+        const upperCaseCharacters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "K", "K", "L", "M", "N", "O", "O", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+        const numericCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        const specialCharacters = ["!", "#", "$", "%", "&", "‘", "(", ")", "*", "+", "-", ".", "/", ":", ";", "=", "?", "@", "^", "_", "{", "|", "}"];
 
-      let availableCharacters = []
-      let finalPasswordArray = []
-      let chosenLength = document.getElementById("passwordlength")
-      let remainingPasswordCharacters = [] //this string will be used to determine how many additional characters need to be added to the password after 1 character from each chosen character has been added
+        let availableCharacters = []
+        let finalPasswordArray = []
+        let chosenLength = document.getElementById("passwordlength")
+        let remainingPasswordCharacters = [] //this string will be used to determine how many additional characters need to be added to the password after 1 character from each chosen character has been added
 
-      //see if special (id="special") is check—if it is, add to availableCharacters array - what can you do to console.log the result with checkec/unchecked?
-      const special = confirm("true or false")
-      const numeric = confirm("true or false")
-      const uppercase = confirm("true or false")
-      const lowercase = confirm("true or false")
+        //see if special (id="special") is check—if it is, add to availableCharacters array - what can you do to console.log the result with checkec/unchecked?
+        const special = confirm("true or false")
+        const numeric = confirm("true or false")
+        const uppercase = confirm("true or false")
+        const lowercase = confirm("true or false")
 
 
-      //the below if/then functions do the following: check to see if their cooresponding input box is checked. If true then:
-      //-add all characters from their cooresponding character array into the total available characters array AND...
-      //-choose a single random character from their cooresponding character array and push it into the final password array. This ensures that at least one of each chosen character will end up in the final password.
-      if (special == true) {
-        //this portion adds all special characters to the availableCharacters array to later be chosen from randomly
-        availableCharacters = availableCharacters.concat(specialCharacters)
-        //this portion selects one character from the specialCharacters array and pushes it to the final password, ensuring that at least one special character is in the final password
-        const randomIndexSpecial = Math.floor(Math.random() * specialCharacters.length);
-        finalPasswordArray.push(specialCharacters[randomIndexSpecial])
-        remainingPasswordCharacters.push(1)
+        //the below if/then functions do the following: check to see if their cooresponding input box is checked. If true then:
+        //-add all characters from their cooresponding character array into the total available characters array AND...
+        //-choose a single random character from their cooresponding character array and push it into the final password array. This ensures that at least one of each chosen character will end up in the final password.
+        if (special == true) {
+          //this portion adds all special characters to the availableCharacters array to later be chosen from randomly
+          availableCharacters = availableCharacters.concat(specialCharacters)
+          //this portion selects one character from the specialCharacters array and pushes it to the final password, ensuring that at least one special character is in the final password
+          const randomIndexSpecial = Math.floor(Math.random() * specialCharacters.length);
+          finalPasswordArray.push(specialCharacters[randomIndexSpecial])
+          remainingPasswordCharacters.push(1)
+        }
+
+        //like above, but with numeric characters, etc for the rest
+        if (numeric == true) {
+          availableCharacters = availableCharacters.concat(numericCharacters)
+          const randomIndexNumeric = Math.floor(Math.random() * numericCharacters.length);
+          finalPasswordArray.push(numericCharacters[randomIndexNumeric])
+          remainingPasswordCharacters.push(1)
+        }
+
+        if (uppercase == true) {
+          availableCharacters = availableCharacters.concat(upperCaseCharacters)
+          const randomIndexUpperCase = Math.floor(Math.random() * upperCaseCharacters.length);
+          finalPasswordArray.push(upperCaseCharacters[randomIndexUpperCase])
+          remainingPasswordCharacters.push(1)
+        }
+
+        if (lowercase == true) {
+          availableCharacters = availableCharacters.concat(lowerCaseCharacters)
+          const randomIndexLowerCase = Math.floor(Math.random() * lowerCaseCharacters.length);
+          finalPasswordArray.push(lowerCaseCharacters[randomIndexLowerCase])
+          remainingPasswordCharacters.push(1)
+        }
+
+        let remainingPasswordCharactersString = remainingPasswordCharacters.length //this counts the occurences in the remainingPasswordCharacters array and converts it to a number
+        console.log(availableCharacters)
+        console.log(remainingPasswordCharactersString)
+
+        for (let i = 0; i < 8 - remainingPasswordCharactersString; i++) {
+          const randomIndex = Math.floor(Math.random() * availableCharacters.length);
+          finalPasswordArray.push(availableCharacters[randomIndex])
+        }
+        console.log(finalPasswordArray)
+
+
+
+        // for (let i = 0; i < chosenLength; i++) {
+        //   finalPasswordArray = finalPasswordArray + 
+        //   }
+
+        // const randomIndex = Math.floor(Math.random() * letters.length);
+
       }
 
-      //like above, but with numeric characters, etc for the rest
-      if (numeric == true) {
-        availableCharacters = availableCharacters.concat(numericCharacters)
-        const randomIndexNumeric = Math.floor(Math.random() * numericCharacters.length);
-        finalPasswordArray.push(numericCharacters[randomIndexNumeric])
-        remainingPasswordCharacters.push(1)
-      }
-
-      if (uppercase == true) {
-        availableCharacters = availableCharacters.concat(upperCaseCharacters)
-        const randomIndexUpperCase = Math.floor(Math.random() * upperCaseCharacters.length);
-        finalPasswordArray.push(upperCaseCharacters[randomIndexUpperCase])
-        remainingPasswordCharacters.push(1)
-      }
-
-      if (lowercase == true) {
-        availableCharacters = availableCharacters.concat(lowerCaseCharacters)
-        const randomIndexLowerCase = Math.floor(Math.random() * lowerCaseCharacters.length);
-        finalPasswordArray.push(lowerCaseCharacters[randomIndexLowerCase])
-        remainingPasswordCharacters.push(1)
-      }
-
-      let remainingPasswordCharactersString = remainingPasswordCharacters.length //this counts the occurences in the remainingPasswordCharacters array and converts it to a number
-      console.log(availableCharacters)
-      console.log(remainingPasswordCharactersString)
-
-      for (let i = 0; i < 8 - remainingPasswordCharactersString; i++) {
-        const randomIndex = Math.floor(Math.random() * availableCharacters.length);
-        finalPasswordArray.push(availableCharacters[randomIndex])
-      }
-      console.log(finalPasswordArray)
-
-
-
-      // for (let i = 0; i < chosenLength; i++) {
-      //   finalPasswordArray = finalPasswordArray + 
-      //   }
-
-      // const randomIndex = Math.floor(Math.random() * letters.length);
-
-    }
-
-    document.getElementById("generate").addEventListener("click", function() {
+      document.getElementById("generate").addEventListener("click", function () {
         passwordGenerator(); //this event listener is triggerin the function password generator laid out above
       });
 
-  }
+    }
 
 
     outsideFunction()
