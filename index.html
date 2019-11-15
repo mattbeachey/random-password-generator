@@ -84,13 +84,11 @@
         let availableCharacters = []
         let finalPasswordArray = []
         const chosenLength = document.getElementById("passwordlength").value;
-        console.log(chosenLength)
         let remainingPasswordCharacters = [] //this string will be used to determine how many additional characters need to be added to the password after 1 character from each chosen character has been added
         const special = document.getElementById("specialID").checked;
         const numeric = document.getElementById("numericID").checked;
         const uppercase = document.getElementById("uppercaseID").checked;
         const lowercase = document.getElementById("lowercaseID").checked;
-        console.log(special)
 
         //the below if/then functions do the following: check to see if their cooresponding input box is checked. If true then:
         //-add all characters from their cooresponding character array into the total available characters array AND...
@@ -128,8 +126,6 @@
         }
 
         let remainingPasswordCharactersString = remainingPasswordCharacters.length //this counts the occurences in the remainingPasswordCharacters array and converts it to a number
-        console.log(availableCharacters)
-        console.log(remainingPasswordCharactersString)
 
         //the loop below selects a random character from the combined array "availableCharacters" and adds it to finalPasswordArray. 
         //It continues doing this until the ammount of strings in finalPasswordArray equals the user's selecte password length.
@@ -140,11 +136,17 @@
           finalPasswordArray.push(availableCharacters[randomIndex])
         }
 
+        //The function below randomizes the finalPasswordArray to add a stronger degree of randomness. Otherwise the password would always start with whatever characters were first selected.
+        //I got this function from: https://medium.com/@nitinpatel_20236/how-to-shuffle-correctly-shuffle-an-array-in-javascript-15ea3f84bfb
+        for (let i = finalPasswordArray.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * i)
+          const temp = finalPasswordArray[i]
+          finalPasswordArray[i] = finalPasswordArray[j]
+          finalPasswordArray[j] = temp
+        }
+
         //the below script converts the finalPasswordArray to a string that can be sent back to the user
-        console.log(finalPasswordArray)
-        //finalPasswordArray.sort()
         let finalPasswordString = finalPasswordArray.join("")
-        console.log(finalPasswordString)
 
         //this script sends the final password to the user
         const finalPasswordText = document.getElementById("password")
