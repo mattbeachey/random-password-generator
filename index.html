@@ -32,26 +32,26 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-3"></div>
     <div class="col-xs-12 col-sm-12 col-md-6">
-        <p class="text-center">(select between 8 and 128)</p><input id="passwordlength" type="text" class="form-control" aria-label="Large"
+      <p class="text-center">(select between 8 and 128)</p><input id="passwordlength" type="text" class="form-control"
+        aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+      <p>Special Characters</p>
+      <input id="specialID" type="checkbox" class="form-control" aria-label="Large"
         aria-describedby="inputGroup-sizing-sm">
-        <p>Special Characters</p>
-        <input id="specialID" type="checkbox" class="form-control" aria-label="Large"
+      <p>Numeric Characters</p>
+      <input id="numericID" type="checkbox" class="form-control" aria-label="Large"
         aria-describedby="inputGroup-sizing-sm">
-        <p>Numeric Characters</p>
-        <input id="numericID" type="checkbox" class="form-control" aria-label="Large"
+      <p>Uppercase Characters</p>
+      <input id="uppercaseID" type="checkbox" class="form-control" aria-label="Large"
         aria-describedby="inputGroup-sizing-sm">
-        <p>Uppercase Characters</p>
-        <input id="uppercaseID" type="checkbox" class="form-control" aria-label="Large"
-        aria-describedby="inputGroup-sizing-sm">
-        <p>Lowercase Characters</p>
-        <input id="lowercaseID" type="checkbox" class="form-control" aria-label="Large"
+      <p>Lowercase Characters</p>
+      <input id="lowercaseID" type="checkbox" class="form-control" aria-label="Large"
         aria-describedby="inputGroup-sizing-sm">
     </div>
     <div class="col-xs-12 col-sm-12 col-md-3"></div>
   </div>
 
 
-  
+
   <textarea readonly id="password" placeholder="Your Secure Password" aria-label="Generated Password"></textarea>
   <button id="generate">Generate Password</button>
   <button id="copy">
@@ -81,25 +81,21 @@
         const upperCaseCharacters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "K", "K", "L", "M", "N", "O", "O", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         const numericCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
         const specialCharacters = ["!", "#", "$", "%", "&", "‘", "(", ")", "*", "+", "-", ".", "/", ":", ";", "=", "?", "@", "^", "_", "{", "|", "}"];
-
         let availableCharacters = []
         let finalPasswordArray = []
         const chosenLength = document.getElementById("passwordlength").value;
-        console.log(chosenLength) //how do I get this to be the user input, and not the entire piece of html
+        console.log(chosenLength)
         let remainingPasswordCharacters = [] //this string will be used to determine how many additional characters need to be added to the password after 1 character from each chosen character has been added
-
-        //see if special (id="special") is check—if it is, add to availableCharacters array - what can you do to console.log the result with checkec/unchecked?
         const special = document.getElementById("specialID").checked;
         const numeric = document.getElementById("numericID").checked;
         const uppercase = document.getElementById("uppercaseID").checked;
         const lowercase = document.getElementById("lowercaseID").checked;
         console.log(special)
 
-
-
         //the below if/then functions do the following: check to see if their cooresponding input box is checked. If true then:
         //-add all characters from their cooresponding character array into the total available characters array AND...
         //-choose a single random character from their cooresponding character array and push it into the final password array. This ensures that at least one of each chosen character will end up in the final password.
+
         if (special == true) {
           //this portion adds all special characters to the availableCharacters array to later be chosen from randomly
           availableCharacters = availableCharacters.concat(specialCharacters)
@@ -135,15 +131,22 @@
         console.log(availableCharacters)
         console.log(remainingPasswordCharactersString)
 
+        //the loop below selects a random character from the combined array "availableCharacters" and adds it to finalPasswordArray. 
+        //It continues doing this until the ammount of strings in finalPasswordArray equals the user's selecte password length.
+        //Note: Before this loop even begins, finalPasswordArray has 1-4 strings in it already from the above if functions.
+
         for (let i = 0; i < chosenLength - remainingPasswordCharactersString; i++) {
           const randomIndex = Math.floor(Math.random() * availableCharacters.length);
           finalPasswordArray.push(availableCharacters[randomIndex])
         }
+
+        //the below script converts the finalPasswordArray to a string that can be sent back to the user
         console.log(finalPasswordArray)
         //finalPasswordArray.sort()
         let finalPasswordString = finalPasswordArray.join("")
         console.log(finalPasswordString)
-        
+
+        //this script sends the final password to the user
         const finalPasswordText = document.getElementById("password")
         finalPasswordText.innerText = finalPasswordString
 
