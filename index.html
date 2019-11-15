@@ -47,22 +47,56 @@
   </div>
 
   <div class="row">
-    <div class="col-md-12 col-lg-3"></div>
-    <div class="col-md-12 col-lg-6">
-      <div class="row">
+    <div class="col-3"></div>
+
+    <div class="col-3">
+      <div class="row rowboat">
         <p>Special Characters</p>
         <input id="specialID" type="checkbox" class="form-control" aria-label="Large"
           aria-describedby="inputGroup-sizing-sm">
+      </div>
+      <div class="row rowboat">
         <p>Numeric Characters</p>
         <input id="numericID" type="checkbox" class="form-control" aria-label="Large"
           aria-describedby="inputGroup-sizing-sm">
+      </div>
+    </div>
+
+    <div class="col-3">
+      <div class="row rowboat">
         <p>Uppercase Characters</p>
         <input id="uppercaseID" type="checkbox" class="form-control" aria-label="Large"
           aria-describedby="inputGroup-sizing-sm">
+      </div>
+      <div class="row rowboat">
         <p>Lowercase Characters</p>
         <input id="lowercaseID" type="checkbox" class="form-control" aria-label="Large"
           aria-describedby="inputGroup-sizing-sm">
       </div>
+    </div>
+
+    <div class="col-3"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 col-lg-3"></div>
+    <div class="col-md-12 col-lg-6">
+      <div class="row">
+
+
+
+
+      </div>
+    </div>
+    <div class="col-md-12 col-lg-3"></div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-md-12 col-lg-3"></div>
+    <div class="col-md-12 col-lg-6">
+      <textarea readonly id="password" placeholder="Your Secure Password" aria-label="Generated Password"></textarea>
     </div>
     <div class="col-md-12 col-lg-3"></div>
   </div>
@@ -70,9 +104,6 @@
 
 
 
-
-
-  <textarea readonly id="password" placeholder="Your Secure Password" aria-label="Generated Password"></textarea>
   <button id="generate">Generate Password</button>
   <button id="copy">
     Copy to Clipboard

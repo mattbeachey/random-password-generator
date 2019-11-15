@@ -24,3 +24,23 @@ p {
 body {
     background-color: #3e8ca2;
 }
+
+textarea {
+    background-color: #3e8ca2;
+    border: 1px solid #ecf1eb;
+    width: 100%;
+    color: #ecf1eb;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 20px;
+    height: 70px;
+    border-radius: 8px;
+}
+
+::placeholder {
+    color: #ecf1eb;
+
+  }
+
+.rowboat {
+    border: 1px solid #ecf1eb;
+}
