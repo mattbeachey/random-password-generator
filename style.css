@@ -2,6 +2,11 @@
     border: 1px solid black;
 } */
 
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
 h1 {
     font-size: 100px;
     color: #ecf1eb;
@@ -110,6 +115,10 @@ input {
 
 .rowboat1:hover, .rowboat2:hover, .rowboat3:hover, .rowboat4:hover {
     background-color: #4d94a8;
+}
+
+.rowboat1:click, .rowboat2:click, .rowboat3:click, .rowboat4:click {
+    background-color: #a54da8;
 }
 
 button {

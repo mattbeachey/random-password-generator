@@ -148,7 +148,7 @@
 
       if (chosenLength > 7) {
 
-        if (chosenLength < 129) {
+        if (chosenLength < 1000000) {
 
 
           if (special == true) {
@@ -191,6 +191,9 @@
           for (let i = 0; i < chosenLength - remainingPasswordCharactersString; i++) {
             const randomIndex = Math.floor(Math.random() * availableCharacters.length);
             finalPasswordArray.push(availableCharacters[randomIndex])
+            setTimeout(function () {
+            console.log(timer)
+        }, 1000);
           }
 
           if (remainingPasswordCharactersString === 0) {
